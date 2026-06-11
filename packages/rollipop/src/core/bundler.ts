@@ -10,7 +10,11 @@ import type { ResolvedConfig } from '../config/defaults';
 import { resolveBuildOptions, type ResolvedBuildOptions } from '../utils/build-options';
 import { createId } from '../utils/id';
 import { FileStorage } from './fs/storage';
-import { getOverrideOptionsForDevServer, resolveRolldownOptions } from './rolldown';
+import {
+  getOverrideOptions,
+  getOverrideOptionsForDevServer,
+  resolveRolldownOptions,
+} from './rolldown';
 import type { BuildType, BuildOptions, BundlerContext, DevEngine, DevEngineOptions } from './types';
 import { BundlerState } from './types';
 
@@ -75,16 +79,20 @@ export class Bundler {
     const resolvedBuildOptions = resolveBuildOptions(this.config, buildOptions);
     const context = Bundler.createContext(buildType, this.config, resolvedBuildOptions);
     const sourcemap = resolvedBuildOptions.sourcemap ? true : false;
-    const { input, output } = await resolveRolldownOptions(
+    const { input = {}, output = {} } = await resolveRolldownOptions(
       context,
       this.config,
       resolvedBuildOptions,
     );
 
+    const overrideOptions = getOverrideOptions();
+    const mergedInput = merge(input, overrideOptions.input);
+    const mergedOutput = merge(output, overrideOptions.output);
+
     const rolldownBuildOptions: rolldown.BuildOptions = {
-      ...input,
+      ...mergedInput,
       output: {
-        ...output,
+        ...mergedOutput,
         sourcemap,
       },
       write: Boolean(resolvedBuildOptions.outfile),

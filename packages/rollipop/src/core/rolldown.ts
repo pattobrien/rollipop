@@ -47,8 +47,6 @@ export interface RolldownOptions {
   output?: rolldown.OutputOptions;
 }
 
-resolveRolldownOptions.cache = new Map<string, RolldownOptions>();
-
 export async function resolveRolldownOptions(
   context: BundlerContext,
   config: ResolvedConfig,
@@ -273,8 +271,11 @@ export async function resolveRolldownOptions(
   return finalOptions;
 }
 
+resolveRolldownOptions.cache = new Map<string, RolldownOptions>();
+
 function resolvePreludePluginOptions(config: ResolvedConfig): PreludePluginOptions {
   return {
+    entryPath: config.entry,
     modulePaths: config.serializer.prelude,
   };
 }
@@ -496,7 +497,21 @@ function toBuildDiagnosticLog(log: rolldown.RolldownLog): BuildDiagnosticLog {
   };
 }
 
+export function getOverrideOptions() {
+  const input: rolldown.InputOptions = {
+    experimental: {
+      nativeMagicString: true,
+    },
+  };
+
+  const output: rolldown.OutputOptions = {};
+
+  return { input, output };
+}
+
 export function getOverrideOptionsForDevServer(buildOptions: ResolvedBuildOptions) {
+  const overrideOptions = getOverrideOptions();
+
   const input: rolldown.InputOptions = {
     transform: {
       jsx: {
@@ -505,7 +520,6 @@ export function getOverrideOptionsForDevServer(buildOptions: ResolvedBuildOption
     },
     experimental: {
       incrementalBuild: true,
-      nativeMagicString: true,
     },
     treeshake: false,
   };
@@ -519,5 +533,8 @@ export function getOverrideOptionsForDevServer(buildOptions: ResolvedBuildOption
     },
   };
 
-  return { input, output };
+  return {
+    input: merge(overrideOptions.input, input),
+    output: merge(overrideOptions.output, output),
+  };
 }
