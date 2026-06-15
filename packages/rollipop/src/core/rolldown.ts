@@ -218,9 +218,6 @@ export async function resolveRolldownOptions(
         config.reporter?.update({ type: 'build_error', level, log: diagnostic });
       } else if (isPluginLog(log)) {
         config.reporter?.update({ type: 'build_log', level, log: diagnostic });
-      }
-
-      if (log.code?.startsWith('PLUGIN_')) {
         printPluginLog(level, log, log.plugin);
       } else {
         defaultHandler(level, log);
@@ -231,7 +228,6 @@ export async function resolveRolldownOptions(
   };
 
   const outputOptions: rolldown.OutputOptions = {
-    format: 'esm',
     file: buildOptions.outfile,
     banner: rolldownBanner,
     footer: rolldownFooter,
@@ -512,12 +508,29 @@ function toBuildDiagnosticLog(log: rolldown.RolldownLog): BuildDiagnosticLog {
 
 export function getOverrideOptions() {
   const input: rolldown.InputOptions = {
+    optimization: {
+      /**
+       * Must disable `inlineConst` option with the rollipop's custom module format.
+       *
+       * ```js
+       * __rollipop_define__(function (global, module, __rollipop_exports__, __rollipop_require__) {
+       * 	 __rollipop_require__.r(__rollipop_exports__);
+       *   __rollipop_require__.d(__rollipop_exports__, { default: () => __default });
+       *   var __default = 'value'; // <-- This must be a preserved as exported value. NOT inlined.
+       * }, 1234);
+       * ```
+       */
+      inlineConst: false,
+    },
     experimental: {
       nativeMagicString: true,
     },
   };
 
-  const output: rolldown.OutputOptions = {};
+  const output: rolldown.OutputOptions = {
+    // `@rollipop/rolldown` specific options
+    format: 'rollipop',
+  };
 
   return { input, output };
 }
@@ -528,7 +541,11 @@ export function getOverrideOptionsForDevServer(buildOptions: ResolvedBuildOption
   const input: rolldown.InputOptions = {
     transform: {
       jsx: {
-        development: true,
+        development: buildOptions.dev,
+        /**
+         * @see `rollipopReactRefreshWrapperPlugin`
+         */
+        refresh: false,
       },
     },
     experimental: {
