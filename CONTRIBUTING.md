@@ -22,13 +22,13 @@ This project adheres to the [Contributor Covenant Code of Conduct](CODE_OF_CONDU
 
 ## Getting Help
 
-If you have questions about the project or need help getting started, please use our [GitHub Discussions](https://github.com/leegeunhyeok/rollipop/discussions) page. This is the best place to ask questions, share ideas, and engage with the community.
+If you have questions about the project or need help getting started, please use our [GitHub Discussions](https://github.com/rollipop-dev/rollipop/discussions) page. This is the best place to ask questions, share ideas, and engage with the community.
 
 ## How to Contribute
 
 There are many ways to contribute to Rollipop:
 
-- **Report bugs**: If you find a bug, please [open an issue](https://github.com/leegeunhyeok/rollipop/issues/new) with a clear description and reproduction steps.
+- **Report bugs**: If you find a bug, please [open an issue](https://github.com/rollipop-dev/rollipop/issues/new) with a clear description and reproduction steps.
 - **Suggest features**: Have an idea for a new feature? Start a discussion or open an issue to share your thoughts.
 - **Improve documentation**: Help us improve our docs by fixing typos, adding examples, or clarifying instructions.
 - **Submit pull requests**: Fix bugs, add features, or improve existing code.

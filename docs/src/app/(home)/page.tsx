@@ -100,14 +100,14 @@ export default function HomePage() {
             <div className="flex flex-col gap-2">
               <p className="font-semibold text-fd-foreground text-sm">Community</p>
               <FooterLink
-                href="https://github.com/leegeunhyeok/rollipop"
+                href="https://github.com/rollipop-dev/rollipop"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 GitHub
               </FooterLink>
               <FooterLink
-                href="https://github.com/leegeunhyeok/rollipop/discussions"
+                href="https://github.com/rollipop-dev/rollipop/discussions"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -117,14 +117,14 @@ export default function HomePage() {
             <div className="flex flex-col gap-2">
               <p className="font-semibold text-fd-foreground text-sm">Resources</p>
               <FooterLink
-                href="https://github.com/leegeunhyeok/rollipop/blob/main/LICENSE"
+                href="https://github.com/rollipop-dev/rollipop/blob/main/LICENSE"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 License
               </FooterLink>
               <FooterLink
-                href="https://github.com/leegeunhyeok/rollipop/releases"
+                href="https://github.com/rollipop-dev/rollipop/releases"
                 target="_blank"
                 rel="noopener noreferrer"
               >

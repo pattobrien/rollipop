@@ -24,7 +24,7 @@ export default function Layout({ children }: LayoutProps<'/docs'>) {
         className: 'bg-fd-background [&>div:first-child]:!p-0',
         footer: (
           <Link
-            href="https://github.com/leegeunhyeok/rollipop"
+            href="https://github.com/rollipop-dev/rollipop"
             target="_blank"
             className={cn(buttonVariants({ size: 'icon', color: 'ghost' }))}
             aria-label="GitHub"

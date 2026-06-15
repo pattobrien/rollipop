@@ -9,7 +9,7 @@ title: Module Federation
   exact Rollipop version for reproducible results.
 </Callout>
 
-Module Federation is provided by the [`@rollipop/plugin-module-federation`](https://github.com/leegeunhyeok/rollipop/tree/main/packages/plugin-module-federation) plugin. It wires [`@module-federation/runtime`](https://module-federation.io/) into the host bundle and emits a self-contained IIFE for each remote, with shared dependencies resolved through a host-owned global registry.
+Module Federation is provided by the [`@rollipop/plugin-module-federation`](https://github.com/rollipop-dev/rollipop/tree/main/packages/plugin-module-federation) plugin. It wires [`@module-federation/runtime`](https://module-federation.io/) into the host bundle and emits a self-contained IIFE for each remote, with shared dependencies resolved through a host-owned global registry.
 
 ## Installation
 
@@ -134,4 +134,4 @@ The plugin's federation runtime adapter delegates `loadEntry` to it. After the s
 - Subpath imports of shared deps (`react/jsx-dev-runtime`, etc.) are bundled into the remote and
   consume the parent shared instance through `__rollipop_shared__`.
 
-See [`examples/module-federation`](https://github.com/leegeunhyeok/rollipop/tree/main/examples/module-federation) for a working RN 0.84 host + remote setup with a Pure C++/Obj-C++ TurboModule script loader.
+See [`examples/module-federation`](https://github.com/rollipop-dev/rollipop/tree/main/examples/module-federation) for a working RN 0.84 host + remote setup with a Pure C++/Obj-C++ TurboModule script loader.

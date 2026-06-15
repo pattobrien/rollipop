@@ -1,15 +1,15 @@
 {
   "name": "@rollipop/plugin-svg",
   "version": "1.0.0-alpha.23",
-  "homepage": "https://github.com/leegeunhyeok/rollipop#readme",
+  "homepage": "https://github.com/rollipop-dev/rollipop#readme",
   "bugs": {
-    "url": "https://github.com/leegeunhyeok/rollipop/issues"
+    "url": "https://github.com/rollipop-dev/rollipop/issues"
   },
   "license": "MIT",
   "author": "leegeunhyeok <dev.ghlee@gmail.com> (https://github.com/leegeunhyeok)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leegeunhyeok/rollipop.git",
+    "url": "git+https://github.com/rollipop-dev/rollipop.git",
     "directory": "packages/plugin-svg"
   },
   "files": [

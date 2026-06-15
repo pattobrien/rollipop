@@ -68,7 +68,7 @@ function Navbar({ mode, links }: NavbarProps) {
     return (
       <div className="flex flex-row items-center justify-center gap-1.5">
         <Link
-          href="https://github.com/leegeunhyeok/rollipop"
+          href="https://github.com/rollipop-dev/rollipop"
           target="_blank"
           className={`max-md:hidden ${iconButtonClass}`}
         >
