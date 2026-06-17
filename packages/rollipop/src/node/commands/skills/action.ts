@@ -58,7 +58,12 @@ export function getSkillMarkdown(name: string, skillsDir: string) {
 }
 
 export function printSkillList(skillsDir = getSkillsDirectory()) {
-  console.log(listSkillNames(skillsDir).join('\n'));
+  console.log('Available skills:');
+  console.log(
+    listSkillNames(skillsDir)
+      .map((name) => `  ${name}`)
+      .join('\n'),
+  );
 }
 
 export function printSkill(name: string, skillsDir = getSkillsDirectory()) {

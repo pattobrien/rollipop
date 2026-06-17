@@ -40,7 +40,8 @@ describe('skills command action', () => {
     printSkillList(tmpDir);
     printSkill('debugging', tmpDir);
 
-    expect(log).toHaveBeenNthCalledWith(1, 'core\ndebugging');
-    expect(log).toHaveBeenNthCalledWith(2, '# Debugging\n');
+    expect(log).toHaveBeenNthCalledWith(1, 'Available skills:');
+    expect(log).toHaveBeenNthCalledWith(2, '  core\n  debugging');
+    expect(log).toHaveBeenNthCalledWith(3, '# Debugging\n');
   });
 });
