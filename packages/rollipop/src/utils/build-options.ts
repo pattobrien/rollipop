@@ -5,10 +5,10 @@ import { merge } from 'es-toolkit';
 import type { ResolvedConfig } from '../config';
 import type { BuildOptions } from '../core/types';
 
-const DEFAULT_BUILD_OPTIONS = {
+const DEFAULT_BUILD_OPTIONS: Partial<BuildOptions> = {
   cache: true,
   minify: false,
-} satisfies Partial<BuildOptions>;
+};
 
 export function resolveBuildOptions(config: ResolvedConfig, buildOptions: BuildOptions) {
   if (buildOptions.outfile) {

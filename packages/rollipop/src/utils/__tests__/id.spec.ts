@@ -2,9 +2,15 @@ import { describe, it, expect } from 'vite-plus/test';
 
 import { createTestConfig } from '../../testing/config';
 import { createId } from '../id';
+import type { ResolvedBuildOptions } from '../build-options';
 
 describe('createId', () => {
-  const BUILD_OPTIONS = { platform: 'ios', dev: true } as const;
+  const BUILD_OPTIONS: ResolvedBuildOptions = {
+    platform: 'ios',
+    dev: true,
+    minify: false,
+    cache: false,
+  };
 
   it('should return the same id', () => {
     const configA = createTestConfig('/root');
@@ -35,11 +41,11 @@ describe('createId', () => {
     expect(idA === idB).toBe(false);
     expect(idA === idC).toBe(false);
     expect([idA, idB, idC]).toMatchInlineSnapshot(`
-    	[
-    	  "33a9173f62c79afd88613b895169a89f",
-    	  "25e7b17175624603fe2dbffb4a262b1c",
-    	  "98532aae415ecbfdaf20fd3d5f0bae86",
-    	]
+      [
+        "3b4579b097c7c28be527d60715511a9a",
+        "05ccf09c99152531da3b1cb00809f7f5",
+        "1236ec91ae9b57f0f3e59b46a5ef5fbf",
+      ]
     `);
   });
 });

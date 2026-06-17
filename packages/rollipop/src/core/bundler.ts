@@ -52,8 +52,8 @@ export class Bundler {
     return devEngine as DevEngine;
   }
 
-  static createId(config: ResolvedConfig, buildOptions: BuildOptions) {
-    return createId(config, buildOptions);
+  static createId(config: ResolvedConfig, buildOptions: ResolvedBuildOptions) {
+    return createId(config, resolveBuildOptions(config, buildOptions));
   }
 
   private static createContext(

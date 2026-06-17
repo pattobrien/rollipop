@@ -2,11 +2,11 @@ import { pick } from 'es-toolkit';
 
 import type { ResolvedConfig } from '../config';
 import { ROLLIPOP_VERSION, ROLLIPOP_VIRTUAL_PREFIX } from '../constants';
-import type { BuildOptions } from '../core/types';
 import { md5 } from './hash';
 import { serialize } from './serialize';
+import type { ResolvedBuildOptions } from './build-options';
 
-export function createId(config: ResolvedConfig, buildOptions: BuildOptions) {
+export function createId(config: ResolvedConfig, buildOptions: ResolvedBuildOptions) {
   return md5(
     serialize([
       ROLLIPOP_VERSION,
@@ -16,8 +16,8 @@ export function createId(config: ResolvedConfig, buildOptions: BuildOptions) {
   );
 }
 
-function filterTransformAffectedOptions(buildOptions: BuildOptions) {
-  return pick(buildOptions, ['platform', 'dev']);
+function filterTransformAffectedOptions(buildOptions: ResolvedBuildOptions) {
+  return pick(buildOptions, ['platform', 'dev', 'minify']);
 }
 
 function filterTransformAffectedConfig(config: ResolvedConfig) {

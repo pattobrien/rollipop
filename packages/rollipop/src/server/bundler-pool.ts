@@ -19,6 +19,7 @@ import { type BundleStore, FileSystemBundleStore } from './bundle';
 import type { ServerEventBus } from './events/event-bus';
 import { logger } from './logger';
 import type { ServerOptions } from './types';
+import { resolveBuildOptions, type ResolvedBuildOptions } from '../utils/build-options';
 
 export interface DevServerOptions {
   host: string;
@@ -45,7 +46,7 @@ export class BundlerDevEngine {
   constructor(
     private readonly options: BundlerDevEngineOptions,
     private readonly config: ResolvedConfig,
-    private readonly buildOptions: BuildOptions,
+    private readonly buildOptions: ResolvedBuildOptions,
     private readonly eventBus: ServerEventBus,
   ) {
     this._id = Bundler.createId(config, buildOptions);
@@ -242,7 +243,8 @@ export class BundlerPool {
 
   get(bundleName: string, buildOptions: Pick<BuildOptions, 'platform' | 'dev'>) {
     const baseBundleName = getBaseBundleName(bundleName);
-    const bundlerId = Bundler.createId(this.config, buildOptions);
+    const resolvedBuildOptions = resolveBuildOptions(this.config, buildOptions);
+    const bundlerId = Bundler.createId(this.config, resolvedBuildOptions);
     const key = `${baseBundleName}-${bundlerId}`;
     const instance = BundlerPool.instances.get(key);
 
@@ -255,7 +257,7 @@ export class BundlerPool {
           server: this.resolvedServerOptions,
         },
         this.config,
-        buildOptions,
+        resolvedBuildOptions,
         this.eventBus,
       );
       logger.debug('Setting new bundler instance', { key });
