@@ -5,6 +5,7 @@ import { Logo } from '../common/logo';
 import { createCommand } from './cli-utils';
 import { command as agentCommand } from './commands/agent';
 import { command as bundleCommand } from './commands/bundle';
+import { command as skillsCommand } from './commands/skills';
 import { command as startCommand } from './commands/start';
 
 export function run(argv: string[]) {
@@ -12,9 +13,10 @@ export function run(argv: string[]) {
 
   const cli = program.name('rollipop').version(version);
 
-  cli.addCommand(createCommand(agentCommand));
-  cli.addCommand(createCommand(bundleCommand));
   cli.addCommand(createCommand(startCommand));
+  cli.addCommand(createCommand(bundleCommand));
+  cli.addCommand(createCommand(agentCommand));
+  cli.addCommand(createCommand(skillsCommand));
 
   cli.parse(argv);
 }

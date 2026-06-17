@@ -91,13 +91,37 @@ rollipop bundle \
 
 ## agent
 
-Print guidance for connecting LLM agents to Rollipop diagnostics.
+Print guidance for LLM agents working on Rollipop projects.
 
 ```bash
 rollipop agent
 ```
 
-The command prints the default SSE and MCP endpoints, MCP client setup, tool discovery guidance, and the recommended build-event workflow for agents. It does not start the dev server or perform any actions by itself. Start the dev server with `--mcp` before connecting an MCP client.
+The command prints a compact agent guide, including:
+
+- bundled skill discovery commands
+- default SSE and MCP endpoints
+- MCP client setup and tool discovery guidance
+- external debugging integrations
+- the recommended build-event workflow for agents
+
+It does not start the dev server or perform any actions by itself. Start the dev server with `--mcp` before connecting an MCP client.
+
+Use `rollipop agent` as the first reference when wiring an agent into a local Rollipop dev server. For task-specific guidance, list the bundled skills and print the one that matches the current task.
+
+## skills
+
+List or print the Rollipop skills bundled with the package. Skills are Markdown task guides intended for coding agents.
+
+```bash
+rollipop skills
+rollipop skills list
+rollipop skills get <name>
+```
+
+`rollipop skills` and `rollipop skills list` print the available skill names. `rollipop skills get <name>` prints the Markdown content for a specific skill.
+
+Start with `core` for general Rollipop usage.
 
 ## Global Options
 

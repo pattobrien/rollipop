@@ -8,7 +8,13 @@ import { withErrorHandler } from './utils';
 
 export function createCommand<T>(commandDefinition: CommandDefinition<T>): Command {
   const { name, description, helpText, options, action } = commandDefinition;
+  const commandArguments = commandDefinition.arguments ?? [];
   const command = new Command(name).description(description);
+
+  for (const argument of commandArguments) {
+    const format = argument.required ? `<${argument.name}>` : `[${argument.name}]`;
+    command.argument(format, argument.description);
+  }
 
   if (options != null) {
     for (const option of options) {
@@ -26,8 +32,18 @@ export function createCommand<T>(commandDefinition: CommandDefinition<T>): Comma
   }
 
   return command.action(
-    withErrorHandler(async function (args) {
-      await action.call({ platforms: ['android', 'ios'] }, args as T);
+    withErrorHandler(async function (...args: unknown[]) {
+      const commandOptions = args[commandArguments.length] ?? {};
+      const actionArgs = { ...(commandOptions as object) } as Record<string, unknown>;
+
+      commandArguments.forEach((argument, index) => {
+        const value = args[index];
+        if (value !== undefined) {
+          actionArgs[argument.name] = value;
+        }
+      });
+
+      await action.call({ platforms: ['android', 'ios'] }, actionArgs as T);
     }),
   );
 }

@@ -13,10 +13,12 @@ export function resolvePath(value: string) {
   return path.resolve(value);
 }
 
-export function withErrorHandler<T = void>(action: (this: Command, args: T) => MaybePromise<void>) {
-  return async function (this: Command, args: T) {
+export function withErrorHandler<T extends unknown[]>(
+  action: (this: Command, ...args: T) => MaybePromise<void>,
+) {
+  return async function (this: Command, ...args: T) {
     try {
-      await action.call(this, args);
+      await action.call(this, ...args);
     } catch (reason) {
       logger.error('An error occurred while executing the command');
       logger.error(`Reason: ${reason instanceof Error ? reason.message : String(reason)}`);

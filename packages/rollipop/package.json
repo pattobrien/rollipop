@@ -17,6 +17,7 @@
     "client.d.ts",
     "bin",
     "dist",
+    "skills",
     "src/runtime/**"
   ],
   "type": "module",
