@@ -23,7 +23,7 @@ export default function HomePage() {
             Modern build toolkit for React Native
           </p>
           <p className="mt-2 text-fd-muted-foreground text-lg text-center md:mt-4 md:text-2xl">
-            Powered by Rolldown & Oxc
+            Powered by Rolldown
           </p>
           <div className="mt-6 flex flex-row gap-4">
             <Link
