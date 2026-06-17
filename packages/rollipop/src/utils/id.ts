@@ -2,9 +2,9 @@ import { pick } from 'es-toolkit';
 
 import type { ResolvedConfig } from '../config';
 import { ROLLIPOP_VERSION, ROLLIPOP_VIRTUAL_PREFIX } from '../constants';
+import type { ResolvedBuildOptions } from './build-options';
 import { md5 } from './hash';
 import { serialize } from './serialize';
-import type { ResolvedBuildOptions } from './build-options';
 
 export function createId(config: ResolvedConfig, buildOptions: ResolvedBuildOptions) {
   return md5(

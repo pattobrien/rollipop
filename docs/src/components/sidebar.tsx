@@ -19,6 +19,7 @@ export function SidebarStyles() {
         display: none !important;
       }
       aside[data-state] > div:first-child button[aria-label="Open Sidebar"]::after {
+        cursor: pointer;
         content: "";
         display: block;
         width: 1.125rem;
@@ -60,6 +61,9 @@ export function SidebarStyles() {
       }
       aside[data-state] > div:first-child > div:first-child > button:last-child {
         order: 2;
+      }
+      button[data-theme-toggle] {
+        cursor: pointer;
       }
     `}</style>
   );

@@ -11,6 +11,7 @@ import { Bundler } from '../core/bundler';
 import { ensureSharedDataPath } from '../core/fs/data';
 import type { BuildOptions, DevEngine } from '../core/types';
 import type { ReportableEvent } from '../types';
+import { resolveBuildOptions, type ResolvedBuildOptions } from '../utils/build-options';
 import { getBaseBundleName } from '../utils/bundle';
 import { bindReporter } from '../utils/config';
 import { normalizeRolldownError } from '../utils/errors';
@@ -19,7 +20,6 @@ import { type BundleStore, FileSystemBundleStore } from './bundle';
 import type { ServerEventBus } from './events/event-bus';
 import { logger } from './logger';
 import type { ServerOptions } from './types';
-import { resolveBuildOptions, type ResolvedBuildOptions } from '../utils/build-options';
 
 export interface DevServerOptions {
   host: string;

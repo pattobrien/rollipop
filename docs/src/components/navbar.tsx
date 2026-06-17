@@ -78,7 +78,7 @@ function Navbar({ mode, links }: NavbarProps) {
         <FullSearchTrigger className="inline-flex hidden w-[200px] cursor-pointer items-center gap-2 rounded-full border bg-fd-secondary/50 p-1.5 ps-2 text-fd-muted-foreground text-sm transition-colors hover:bg-fd-accent hover:text-fd-accent-foreground md:flex dark:bg-[#2e2e2e]" />
         <ThemeSwitch className="hidden cursor-pointer md:flex" mode="light-dark" />
         {/* Mobile */}
-        <SearchTrigger className="cursor-pointer md:hidden" />
+        <SearchTrigger className={cn('md:hidden', iconButtonClass, 'p-2')} />
         <div className="flex flex-row items-center justify-center md:hidden">
           <button type="button" className={iconButtonClass} onClick={() => setOpen(!open)}>
             <MenuIcon color="currentColor" />
@@ -91,7 +91,7 @@ function Navbar({ mode, links }: NavbarProps) {
   return (
     <nav
       className={cn(
-        'fixed top-0 z-10 flex h-[56px] w-full bg-fd-background transition-shadow duration-300 md:z-1000',
+        'fixed top-0 z-10 flex h-[56px] w-full bg-fd-background transition-shadow duration-300 md:z-30',
         (mode === 'docs' || isScrolled) && 'shadow-[0_1px_0_0_var(--color-fd-border)]',
       )}
     >

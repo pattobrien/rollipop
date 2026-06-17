@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vite-plus/test';
 
 import { createTestConfig } from '../../testing/config';
-import { createId } from '../id';
 import type { ResolvedBuildOptions } from '../build-options';
+import { createId } from '../id';
 
 describe('createId', () => {
   const BUILD_OPTIONS: ResolvedBuildOptions = {
