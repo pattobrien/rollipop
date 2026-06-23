@@ -89,21 +89,24 @@ function Navbar({ mode, links }: NavbarProps) {
   };
 
   return (
-    <nav
-      className={cn(
-        'fixed top-0 z-10 flex h-[56px] w-full bg-fd-background transition-shadow duration-300 md:z-30',
-        (mode === 'docs' || isScrolled) && 'shadow-[0_1px_0_0_var(--color-fd-border)]',
-      )}
-    >
-      <div
+    <>
+      <nav
         className={cn(
-          'mx-auto flex w-full flex-row items-center justify-between px-4',
-          mode === 'home' && 'max-w-[1200px]',
+          'fixed top-0 z-10 flex h-[56px] w-full bg-fd-background transition-shadow duration-300 md:z-30',
+          (mode === 'docs' || isScrolled) && 'shadow-[0_1px_0_0_var(--color-fd-border)]',
         )}
       >
-        {right()}
-        {left()}
-      </div>
-    </nav>
+        <div
+          className={cn(
+            'mx-auto flex w-full flex-row items-center justify-between px-4',
+            mode === 'home' && 'max-w-[1200px]',
+          )}
+        >
+          {right()}
+          {left()}
+        </div>
+      </nav>
+      {mode === 'docs' && <div className="h-14" />}
+    </>
   );
 }

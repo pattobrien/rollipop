@@ -9,9 +9,7 @@ export default function Layout({ children }: LayoutProps<'/docs'>) {
   return (
     <DocsLayout
       tree={source.pageTree}
-      nav={{
-        component: <DocsNavBar />,
-      }}
+      nav={{ component: <DocsNavBar /> }}
       sidebar={{
         collapsible: false,
         className: 'bg-fd-background [&>div:first-child]:!p-0',
