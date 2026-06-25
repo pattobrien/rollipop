@@ -1,7 +1,17 @@
 {
   "name": "@rollipop/dashboard",
   "version": "0.0.0",
-  "private": true,
+  "homepage": "https://github.com/rollipop-dev/rollipop#readme",
+  "bugs": {
+    "url": "https://github.com/rollipop-dev/rollipop/issues"
+  },
+  "license": "MIT",
+  "author": "leegeunhyeok <dev.ghlee@gmail.com> (https://github.com/leegeunhyeok)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rollipop-dev/rollipop.git",
+    "directory": "packages/dashboard"
+  },
   "files": [
     "dist",
     "index.js",
