@@ -1,0 +1,32 @@
+---
+title: Dashboard
+---
+
+Rollipop includes a built-in dashboard for inspecting the development server from the browser.
+
+![Rollipop dashboard overview](/dashboard.png)
+
+Open the dashboard from the dev server:
+
+```bash
+rollipop start
+```
+
+Then visit:
+
+```txt
+http://localhost:8081/dashboard
+```
+
+## Features
+
+- **Instances**: Inspect active bundler instances, targets, build options, bundle URLs, and the latest build status
+- **Devices**: View React Native app clients connected to the dev server
+- **Bundles**: Preview large generated bundles by position without rendering the entire file
+- **Analyze**: Open bundle analysis reports when the analyzer is enabled
+- **Build Logs**: Inspect build logs by bundler instance and filter by log level
+- **Actions**: Reload connected clients, reset the transform cache, and reset development server state
+
+## Bundle Analysis
+
+The Analyze tab depends on the analyzer configuration and generated report files. See [Bundle Analysis](/docs/features/analyze) for setup and options.
