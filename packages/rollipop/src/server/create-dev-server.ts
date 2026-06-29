@@ -24,8 +24,6 @@ import { serveBundle } from './middlewares/serve-bundle';
 import { sse } from './middlewares/sse';
 import { symbolicate } from './middlewares/symbolicate';
 import { rest } from './rest';
-import { toSSEEvent } from './sse/adapter';
-import { SSEEventPublisher } from './sse/event-bus';
 import { DevServerState } from './state/store';
 import type { DevServer, DevServerContext, DevServerEvents, ServerOptions } from './types';
 import { HMRServer } from './wss/hmr-server';
@@ -54,15 +52,7 @@ export async function createDevServer(
   const eventBus = new ServerEventBus();
   const state = new DevServerState({ eventBus });
   const bundlerPool = new BundlerPool(config, { host, port }, eventBus);
-  const ssePublisher = new SSEEventPublisher();
   const reporter = config.reporter;
-
-  eventBus.subscribe((event) => {
-    const sseEvent = toSSEEvent(event);
-    if (sseEvent != null) {
-      ssePublisher.publish(sseEvent);
-    }
-  });
 
   const {
     middleware: communityMiddleware,

@@ -4,6 +4,22 @@ import { ServerEventBus } from '../../events/event-bus';
 import { DevServerState } from '../store';
 
 describe('DevServerState', () => {
+  it('ignores transform progress events', () => {
+    const eventBus = new ServerEventBus();
+    const state = new DevServerState({ eventBus });
+
+    eventBus.emit({
+      type: 'transform',
+      bundlerId: 'ios-dev',
+      id: '/App.tsx',
+      totalModules: 10,
+      transformedModules: 1,
+    });
+
+    expect(state.getBuilds()).toEqual([]);
+    expect(state.getBuildLogs('ios-dev')).toBeUndefined();
+  });
+
   it('limits retained build logs to 1000 entries', () => {
     const eventBus = new ServerEventBus();
     const state = new DevServerState({ eventBus });

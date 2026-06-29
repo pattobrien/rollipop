@@ -76,7 +76,15 @@ export class DevServerState {
   }
 
   private handleEvent(event: ServerEvent): void {
-    this.builds.handleEvent(event);
+    switch (event.type) {
+      case 'bundle_build_started':
+      case 'bundle_build_done':
+      case 'bundle_build_failed':
+      case 'build_log':
+      case 'build_error':
+        this.builds.handleEvent(event);
+        break;
+    }
   }
 }
 
