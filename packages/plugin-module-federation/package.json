@@ -38,7 +38,6 @@
   },
   "dependencies": {
     "@module-federation/runtime": "2.5.1",
-    "@module-federation/sdk": "2.5.1",
     "dedent": "1.7.2",
     "es-toolkit": "catalog:"
   },

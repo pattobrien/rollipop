@@ -1,4 +1,3 @@
-import Ajv from 'ajv';
 import { asConst, type FromSchema } from 'json-schema-to-ts';
 
 export const bundleRequestSchema = asConst({
@@ -30,4 +29,3 @@ export const bundleRequestSchema = asConst({
 });
 
 export type BundleRequestSchema = FromSchema<typeof bundleRequestSchema>;
-export const validateBundleRequest = new Ajv().compile(bundleRequestSchema);

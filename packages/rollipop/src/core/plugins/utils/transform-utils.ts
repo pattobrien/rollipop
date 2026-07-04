@@ -82,10 +82,6 @@ function isCurrentRevision(
   return hasFlag(meta) && meta[REVISION_KEY] === revision;
 }
 
-export interface TransformBoundaryPluginOptions {
-  context: BundlerContext;
-}
-
 export function withTransformBoundary(
   context: BundlerContext,
   plugins: PluginOption,

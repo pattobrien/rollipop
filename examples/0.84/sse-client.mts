@@ -17,7 +17,7 @@ import http from 'node:http';
 
 import pc from 'picocolors';
 
-import type { SSEEvent } from '../packages/rollipop/src/server/sse/types';
+import type { SSEEvent } from 'rollipop';
 
 const port = Number(process.argv[2] || '8081');
 const host = process.argv[3] || 'localhost';

@@ -101,24 +101,3 @@ export class Logger {
     return new Logger(`${this.scope}:${scope}`);
   }
 }
-
-export interface LoggerFilterOptions {
-  level: LogLevel;
-  filter: (args: unknown[]) => unknown[];
-}
-
-export function loggerFilter(logger: Logger, options: LoggerFilterOptions): Logger {
-  const originalLog = logger[options.level];
-
-  logger[options.level] = (...args: unknown[]) => {
-    const filteredArgs = options.filter(args);
-
-    if (filteredArgs.length === 0) {
-      return;
-    }
-
-    originalLog(...filteredArgs);
-  };
-
-  return logger;
-}

@@ -1,4 +1,4 @@
-import url from 'url';
+import url from 'node:url';
 
 import { createDevServerMiddleware } from '@react-native-community/cli-server-api';
 import { createDevMiddleware } from '@react-native/dev-middleware';

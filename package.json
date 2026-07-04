@@ -19,11 +19,13 @@
     "docs:dev": "yarn workspace docs dev",
     "docs:build": "yarn workspace docs build",
     "scripts:version": ".scripts/version.sh",
-    "scripts:publish": ".scripts/publish.sh"
+    "scripts:publish": ".scripts/publish.sh",
+    "knip": "knip"
   },
   "devDependencies": {
     "@types/node": "^24",
-    "typescript": "catalog:",
+    "knip": "^6.21.0",
+    "typescript": "^6.0.3",
     "vite-plus": "catalog:"
   },
   "packageManager": "yarn@4.17.0"

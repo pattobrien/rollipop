@@ -14,13 +14,6 @@ export type WebSocketClient = ws.WebSocket & {
   id: number;
 };
 
-export interface WebSocketEventMap {
-  connection: [WebSocketClient];
-  message: [WebSocketClient, ws.RawData];
-  error: [WebSocketClient, Error];
-  close: [WebSocketClient];
-}
-
 export abstract class WebSocketServer extends EventEmitter {
   protected clientId = 0;
   protected wss: ws.Server;
