@@ -122,15 +122,12 @@
       "entry": [
         "vite.config.ts",
         "src/index.ts",
-        "src/transformer.ts"
+        "src/transformer.ts",
+        "src/mock.ts"
       ],
       "project": [
         "**/*.{js,jsx,ts,tsx,mjs,mts,cjs,cts}",
         "!dist/**"
-      ],
-      "ignoreDependencies": [
-        "@react-native/jest-preset",
-        "react-native"
       ]
     },
     "packages/plugin-module-federation": {

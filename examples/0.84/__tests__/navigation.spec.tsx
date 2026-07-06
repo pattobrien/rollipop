@@ -13,17 +13,15 @@ test('pressing "Get Started" navigates to the details screen', async () => {
   fireEvent.press(screen.getByText('Get Started'));
 
   // After navigation, the details screen renders its title.
-  expect(await screen.findByText('Test cases')).toBeTruthy();
+  expect(await screen.findByText('Test suites')).toBeTruthy();
 });
 
 test('running the test suites reports all runtime checks as passed', async () => {
   render(<App />);
 
   fireEvent.press(screen.getByText('Get Started'));
-  expect(await screen.findByText('Test cases')).toBeTruthy();
-
-  fireEvent.press(screen.getByText('Open Test Suites'));
-  expect(await screen.findByText('Runtime checks')).toBeTruthy();
+  expect(await screen.findByText('Test suites')).toBeTruthy();
+  expect(screen.getByText('Runtime checks')).toBeTruthy();
 
   fireEvent.press(screen.getByText('Run all checks'));
 

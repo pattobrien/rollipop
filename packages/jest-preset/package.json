@@ -28,6 +28,10 @@
       "types": "./dist/transformer.d.ts",
       "default": "./dist/transformer.js"
     },
+    "./mock": {
+      "types": "./dist/mock.d.ts",
+      "default": "./dist/mock.js"
+    },
     "./jest-preset": "./jest-preset.js",
     "./package.json": "./package.json"
   },

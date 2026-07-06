@@ -1,3 +1,5 @@
+const { mockGlobImport } = require('@rollipop/jest-preset/mock');
+
 // @see https://docs.swmansion.com/react-native-reanimated/docs/guides/testing
 jest.mock('react-native-worklets', () => require('react-native-worklets/lib/module/mock'));
 jest.mock('react-native-reanimated', () => require('react-native-reanimated/mock'));
@@ -12,3 +14,19 @@ jest.mock(
 jest.mock('@rozenite/react-navigation-plugin', () => ({
   useReactNavigationDevTools: () => {},
 }));
+
+mockGlobImport(({ importer, pattern, options }) => {
+  if (
+    importer.endsWith('AppNavigator.tsx') &&
+    pattern === '../pages/*' &&
+    options?.eager === true &&
+    options?.import === 'default'
+  ) {
+    return {
+      '../pages/details.ts': require('./src/pages/details').default,
+      '../pages/index.ts': require('./src/pages/index').default,
+    };
+  }
+
+  return {};
+});

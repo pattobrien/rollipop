@@ -5,6 +5,8 @@ import { Constants, loadEnv, rolldownExperimental } from 'rollipop';
 
 import { defineEnvFromObject } from './env';
 
+const GLOB_IMPORT_HELPER = 'require("@rollipop/jest-preset/mock").createGlobImport(__filename)';
+
 export interface TransformerOptions {
   mode?: 'development' | 'production';
   root?: string;
@@ -64,6 +66,7 @@ export function createTransformer(options: TransformerOptions = {}): JestSyncTra
       globals: {
         'import.meta.hot': 'undefined',
         'import.meta.env': JSON.stringify({}),
+        'import.meta.glob': GLOB_IMPORT_HELPER,
         // User envs
         ...defineEnvFromObject(env),
         // Built-in envs
